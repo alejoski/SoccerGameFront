@@ -1,0 +1,60 @@
+
+
+███████╗ ██████╗  ██████╗ ██████╗███████╗██████╗      ██████╗  █████╗ ███╗   ███╗███████╗
+██╔════╝██╔═══██╗██╔════╝██╔════╝██╔════╝██╔══██╗    ██╔════╝ ██╔══██╗████╗ ████║██╔════╝
+███████╗██║   ██║██║     ██║     █████╗  ██████╔╝    ██║  ███╗███████║██╔████╔██║█████╗
+╚════██║██║   ██║██║     ██║     ██╔══╝  ██╔══██╗    ██║   ██║██╔══██║██║╚██╔╝██║██╔══╝
+███████║╚██████╔╝╚██████╗╚██████╗███████╗██║  ██║    ╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗
+╚══════╝ ╚═════╝  ╚═════╝ ╚═════╝╚══════╝╚═╝  ╚═╝     ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝
+
+
+
+#######################################
+NODE    > 20.17.0
+ANGULAR > 18.2.6
+
+
+
+
+
+[] Base de Datos
+	[ ] Definir tipo de BD
+	[ ] Definir tablas BD
+[ ] Diseñar interfaz
+	[ ] Definir Opciones de la apliacion
+	[ ] Definir flujo de pantallas de la aplicacion
+[ ] Crear el Backend
+	[ ] Transcribir la logica implementada al nuevo Backend
+
+Intal:
+1) NVM (OK)
+2) Node v20.17.0 ->
+   nvm instal v20.17.0
+3) nvm use 20.17.0
+4) npm install -g @angular/cli
+
+		Angular CLI: 18.2.6
+		Node: 20.17.0
+		Package Manager: npm 10.8.2
+		OS: win32 x64
+
+		Angular:
+		...
+
+		Package                      Version
+		------------------------------------------------------
+		@angular-devkit/architect    0.1802.6 (cli-only)
+		@angular-devkit/core         18.2.6 (cli-only)
+		@angular-devkit/schematics   18.2.6 (cli-only)
+		@schematics/angular          18.2.6 (cli-only)
+
+
+5) ng new SoccerGameFront
+6) git
+	git init
+	git branch -m develop
+	git add .
+	git commit -m "Primer commit, creacion repositorio y proyecto"
+	git remote add origin https://github.com/alejoski/SoccerGameFront.git
+	git push -u origin develop
+
