@@ -2,16 +2,17 @@
 
 ███████╗ ██████╗  ██████╗ ██████╗███████╗██████╗      ██████╗  █████╗ ███╗   ███╗███████╗
 ██╔════╝██╔═══██╗██╔════╝██╔════╝██╔════╝██╔══██╗    ██╔════╝ ██╔══██╗████╗ ████║██╔════╝
-███████╗██║   ██║██║     ██║     █████╗  ██████╔╝    ██║  ███╗███████║██╔████╔██║█████╗
-╚════██║██║   ██║██║     ██║     ██╔══╝  ██╔══██╗    ██║   ██║██╔══██║██║╚██╔╝██║██╔══╝
+███████╗██║   ██║██║     ██║     █████╗  ██████╔╝    ██║  ███╗███████║██╔████╔██║█████╗  
+╚════██║██║   ██║██║     ██║     ██╔══╝  ██╔══██╗    ██║   ██║██╔══██║██║╚██╔╝██║██╔══╝  
 ███████║╚██████╔╝╚██████╗╚██████╗███████╗██║  ██║    ╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗
 ╚══════╝ ╚═════╝  ╚═════╝ ╚═════╝╚══════╝╚═╝  ╚═╝     ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝
-
-
-
+                                                                                         
+                                                                                         
+                                                                                         
 #######################################
-NODE    > 20.17.0
-ANGULAR > 18.2.6
+NODE     > 20.17.0
+ANGULAR  > 18.2.6
+BOOTSTRAP > 5.3.3
 
 
 
@@ -22,13 +23,13 @@ ANGULAR > 18.2.6
 	[ ] Definir tablas BD
 [ ] Diseñar interfaz
 	[ ] Definir Opciones de la apliacion
-	[ ] Definir flujo de pantallas de la aplicacion
-[ ] Crear el Backend
+	[ ] Definir flujo de pantallas de la aplicacion 
+[ ] Crear el Backend 
 	[ ] Transcribir la logica implementada al nuevo Backend
 
 Intal:
 1) NVM (OK)
-2) Node v20.17.0 ->
+2) Node v20.17.0 -> 
    nvm instal v20.17.0
 3) nvm use 20.17.0
 4) npm install -g @angular/cli
@@ -50,7 +51,7 @@ Intal:
 
 
 5) ng new SoccerGameFront
-6) git
+6) git 
 	git init
 	git branch -m develop
 	git add .
@@ -58,3 +59,40 @@ Intal:
 	git remote add origin https://github.com/alejoski/SoccerGameFront.git
 	git push -u origin develop
 
+
+INSTALACION FASTAPI
+
+1) python -m venv .venv
+2) .venv/Scripts/activate
+		//Si falla la ejecucion dela mbiente  (Set-ExecutionPolicy Unrestricted -Scope Process)
+3) pip install "fastapi[standard]"
+
+4)pip freeze > requirements.txt
+		pip install -r requeriments.txt
+
+
+APOYOS
+
+https://www.youtube.com/watch?v=_y9qQZXE24A&t=3217s
+https://www.youtube.com/watch?v=OKUDmlvB8Hk&list=PLHftsZss8mw7pSRpCyd-TM4Mu43XdyB3R
+https://platzi.com/home/clases/9012-fastapi/67280-instalacion-y-configuracion-de-sqlalchemy/
+https://www.youtube.com/watch?v=Ro2m95m8QkI --BD 
+https://www.youtube.com/watch?v=zzOwU41UjTM -- BD OK
+
+DEPDENCIAS INSTALADAS
+npm i bootstrap@5.3.3
+
+DEPENDENCIAS BACK
+pip install sqlalchemy
+pip install mysql-connector-python
+
+
+
+
+
+
+
+BD
+Gran ++ escritura -- LEctura SQL
+
+-- Escrtura ++ Lectura  No relacional (Mejora rendimiento)
