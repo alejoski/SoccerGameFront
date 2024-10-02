@@ -10,10 +10,5 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'SoccerGameFront';
-  menuOption: string = 'home';
 
-  onOption(option: string) {
-    this.menuOption = option;
-  }
 }
