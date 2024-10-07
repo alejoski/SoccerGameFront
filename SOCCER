@@ -112,4 +112,13 @@ Gran ++ escritura -- LEctura SQL
    ██║   ╚██████╔╝██████╔╝╚██████╔╝
    ╚═╝    ╚═════╝ ╚═════╝  ╚═════╝
 
+[] Para nuevo usuario implementar un formulario emergente.
+    - https://getbootstrap.com/docs/4.0/components/modal/
+[]Implementar time zone en la fecha de login
+
 [] Implementar ENtrenamientos
+
+
+https://www.youtube.com/watch?v=Hq6y9SDk0bU
+11:00
+auth.service

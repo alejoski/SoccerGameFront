@@ -1,4 +1,6 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './core/guards/auth.guard';
+import { authenticatedGuard } from './core/guards/authenticated.guard';
 
   // { path: '', component: HomeComponent },
   // { path: 'team-char', component: TeamCharacteristicsComponent },
@@ -7,7 +9,7 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
-    path: '',
+    path: 'main',
     loadComponent: () => import('./components/shared/layout/layout.component'),
     children: [
       {
@@ -16,6 +18,7 @@ export const routes: Routes = [
           import('./components/home/home.component').then(
             (m) => m.HomeComponent
           ),
+        canActivate: [authGuard],
       },
       {
         path: 'team-char',
@@ -23,6 +26,7 @@ export const routes: Routes = [
           import(
             './components/business/caracteristicas-equipo/caracteristicas-equipo.component'
           ),
+        canActivate: [authGuard],
       },
       {
         path: '',
@@ -32,8 +36,13 @@ export const routes: Routes = [
     ],
   },
   {
+    path: 'new-user',
+    loadComponent: () => import('./components/business/new-user-register/new-user-register.component')
+  },
+  {
     path: 'login',
     loadComponent: () => import('./components/login/login.component'),
+    canActivate: [authenticatedGuard],
   },
-  { path: '**', redirectTo: 'home' },
+  { path: '**', redirectTo: 'login' },
 ];
