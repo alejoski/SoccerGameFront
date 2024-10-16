@@ -27,6 +27,9 @@ BOOTSTRAP > 5.3.3
 [ ] Crear el Backend
 	[ ] Transcribir la logica implementada al nuevo Backend
 
+[] IMplementar seguridad JWT  desde angular
+[] Validar la autenticación del usuario con la BD
+
 Intal:
 1) NVM (OK)
 2) Node v20.17.0 ->
@@ -89,8 +92,13 @@ DEPDENCIAS INSTALADAS
 npm i bootstrap@5.3.3
 
 DEPENDENCIAS BACK
-pip install sqlalchemy
-pip install mysql-connector-python
+  pip install sqlalchemy
+  pip install mysql-connector-python
+
+DEpendencias front
+  npm install crypto-js
+  npm install @types/crypto-js
+
 
 
 
@@ -114,9 +122,11 @@ Gran ++ escritura -- LEctura SQL
 
 [] Para nuevo usuario implementar un formulario emergente.
     - https://getbootstrap.com/docs/4.0/components/modal/
+    - https://angular.dev/guide/forms/reactive-forms
+
 []Implementar time zone en la fecha de login
 
-[] Implementar ENtrenamientos
+[]Implementar ENtrenamientos
 
 
 https://www.youtube.com/watch?v=Hq6y9SDk0bU

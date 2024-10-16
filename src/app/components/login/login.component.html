@@ -40,12 +40,11 @@
                   <a class="small text-muted" href="#!">Olvidaste la contraseña?</a>
                   <br><br>
                   <p class="mb-1 pb-lg-0" style="color: #393f81;">No tienes cuenta?
-                    <a routerLink="/new-user"style="color: #393f81;">Registrate</a>
-
-
-
+                    <button type="button" class="btn btn-link"  data-bs-toggle="modal" data-bs-target="#exampleModal">Registrate</button>
                   </p>
                 </form>
+
+
 
               </div>
             </div>
@@ -55,3 +54,11 @@
     </div>
   </div>
 </section>
+
+
+<!-- MODAL: Formulario de creacion del usuario -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <app-new-user-register></app-new-user-register>
+
+</div>

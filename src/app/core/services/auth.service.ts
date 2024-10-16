@@ -10,13 +10,14 @@ import { Util } from '../../components/shared/util/util.component';
 export class AuthService {
   private LOGIN_URL = 'http://127.0.0.1:8000/usuarios/login';
 
+  //Nombre del la llave con la q se alamcena en el Local Storage
   private tokenKey = 'authTokenSG';
 
   constructor(private httpClient: HttpClient, private router: Router) {}
 
-  login(correo: string, password: string): Observable<any> {
-    console.log('en el servicio ', correo, ' / ', password);
-    return this.httpClient.post<any>(this.LOGIN_URL, { correo, password }).pipe(
+  login(email: string, password: string): Observable<any> {
+    console.log('en el servicio ', email, ' / ', password);
+    return this.httpClient.post<any>(this.LOGIN_URL, { email, password }).pipe(
       tap((response) => {
         if (response.token) {
           console.log(response.token);
