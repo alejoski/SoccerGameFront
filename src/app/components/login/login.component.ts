@@ -4,6 +4,7 @@ import { AuthService } from '../../core/services/auth.service';
 import { FormControl, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import NewUserRegisterComponent from '../business/new-user-register/new-user-register.component';
+import * as CryptoJS from 'crypto-js';
 
 
 @Component({
@@ -24,9 +25,15 @@ export default class LoginComponent {
 
   login(): void {
     console.log('Llego a login()', this.email, ' - ', this.password);
-    this.authSerices.login(this.email, this.password).subscribe({
+
+    const hash1 = CryptoJS.MD5(this.password).toString();
+    const hash2 = CryptoJS.MD5(hash1).toString();
+
+    this.authSerices.login(this.email, hash2).subscribe({
       next: () => this.router.navigate(['/main/home']),
       error: (err) => console.log('Login Failed', err),
     });
   }
+
+
 }

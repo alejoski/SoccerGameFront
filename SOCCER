@@ -16,19 +16,26 @@ BOOTSTRAP > 5.3.3
 
 
 
+##############
+#####FRONT####
+##############
 
-
-[] Base de Datos
-	[ ] Definir tipo de BD
-	[ ] Definir tablas BD
 [ ] Diseñar interfaz
 	[ ] Definir Opciones de la apliacion
 	[ ] Definir flujo de pantallas de la aplicacion
-[ ] Crear el Backend
-	[ ] Transcribir la logica implementada al nuevo Backend
-
 [] IMplementar seguridad JWT  desde angular
-[] Validar la autenticación del usuario con la BD
+[] Al registarse el usaurio que avise que se registro correctamente y limpie el formulario
+
+#############
+####BACK#####
+#############
+[] Implementar JWT en los demas servicios
+[*] Validar la autenticación del usuario con la BD
+[*] Crear el Backend
+	[ ] Transcribir la logica implementada al nuevo Backend
+[*] Base de Datos
+	[*] Definir tipo de BD
+	[] Definir tablas BD
 
 Intal:
 1) NVM (OK)

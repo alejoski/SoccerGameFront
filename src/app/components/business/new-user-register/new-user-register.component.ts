@@ -14,54 +14,56 @@ import { UsersService } from '../../../core/services/users.service';
   styleUrl: './new-user-register.component.css',
 })
 export default class NewUserRegisterComponent {
-
   formNewUser = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    teamName: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
-    password2: new FormControl('', Validators.required),
+    email:     new FormControl('', [Validators.required, Validators.email]),
+    teamName:  new FormControl('', Validators.required),
+    password:  new FormControl('', [Validators.required, Validators.minLength(5)]),
+    password2: new FormControl('',[Validators.required, Validators.minLength(5)]),
   });
 
   newUser = new User();
 
   encryptedPassword: any = '';
 
-  constructor(private userService: UsersService){}
+  constructor(private userService: UsersService) {}
+
+  passwordOk: boolean = true;
+  validationFormOk: boolean = false;
 
   /***
    * Crea el nuevo usuario
    */
   enviarNuevoUsuario() {
     //Valida que el formulario este OK
+
+
+
     if (this.formNewUser.valid) {
       this.encryptedPassword = this.formNewUser.get('password2')?.value;
       this.encryptedPassword = this.hashPassword(this.encryptedPassword);
 
       this.newUser = {
-        id : "0",
+        id: '0',
         email: this.formNewUser.get('email')?.value,
         user_name: this.formNewUser.get('email')?.value,
         team_name: this.formNewUser.get('teamName')?.value,
         password: this.encryptedPassword,
-
       };
 
       this.userService.newUser(this.newUser).subscribe({
-        next: () => console.log("Finalizo bien"),
-        error: (err) =>{
-          console.log("Fallo algo ")
+        next: () => {
+          console.log('Finalizo bien');
+          this.formNewUser.reset();
+        },
+        error: (err) => {
+          console.log('Fallo algo ');
           console.log(err);
-
-        }
-
-      })
+        },
+      });
     }
-
-
   }
 
   hashPassword(password: string): string {
-
     const hash1 = CryptoJS.MD5(password).toString();
     const hash2 = CryptoJS.MD5(hash1).toString();
     return hash2;
@@ -70,18 +72,24 @@ export default class NewUserRegisterComponent {
   /*
    * Valida si el control ya ha sido tocado y si tiene errores
    */
-  hasErrros(controlName: string) {
+  hasErrros(controlName: string, errorType: string) {
     return (
-      !this.formNewUser.get(controlName)?.valid &&
+      this.formNewUser.get(controlName)?.hasError(errorType) &&
       this.formNewUser.get(controlName)?.touched
     );
   }
 
-  passWordDiferente() {
+  passWordEquals() {
     return (
       this.formNewUser.get('password')?.value ==
         this.formNewUser.get('password2')?.value ||
       !this.formNewUser.get('password2')?.touched
     );
+  }
+
+  validateForm():boolean{
+    console.log("Llego a validar el formulario")
+
+    return true;
   }
 }
