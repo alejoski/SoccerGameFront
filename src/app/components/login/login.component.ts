@@ -17,7 +17,9 @@ import * as CryptoJS from 'crypto-js';
 export default class LoginComponent {
   email: string = '';
   password: string = '';
-
+  loginError = false;
+  otherError = false;
+  errorMessage = ""
   formNewUser = new FormControl('')
 
   constructor(private authSerices: AuthService,
@@ -30,8 +32,22 @@ export default class LoginComponent {
     const hash2 = CryptoJS.MD5(hash1).toString();
 
     this.authSerices.login(this.email, hash2).subscribe({
-      next: () => this.router.navigate(['/main/home']),
-      error: (err) => console.log('Login Failed', err),
+      next: () => {
+        this.router.navigate(['/main/home'])
+      },
+      error: (err) => {
+         console.log('Login Failed')
+         console.log(err)
+
+        if (err.error.detail.includes('user_not_found')) {
+          this.loginError = true;
+        } else {
+          console.log('Error inesperado');
+          this.otherError = true;
+          this.errorMessage = err.error.detail;
+        }
+         console.log("-*-*-*-*");
+      },
     });
   }
 

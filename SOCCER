@@ -16,6 +16,18 @@ BOOTSTRAP > 5.3.3
 
 
 
+
+
+##############
+#####NOTOR####
+##############
+
+de un diciionario se puede sacar los valores : con la operacion <diccionario>.get()
+
+
+
+
+
 ##############
 #####FRONT####
 ##############
@@ -23,8 +35,12 @@ BOOTSTRAP > 5.3.3
 [ ] Diseñar interfaz
 	[ ] Definir Opciones de la apliacion
 	[ ] Definir flujo de pantallas de la aplicacion
-[] IMplementar seguridad JWT  desde angular
-[] Al registarse el usaurio que avise que se registro correctamente y limpie el formulario
+[*] IMplementar seguridad JWT  desde angular
+[*] Al registarse el usaurio que avise que se registro correctamente y limpie el formulario
+[] Cuando la contrasela es incorrecta que avise
+[] Al ingresar mostrar el nombre del usuario
+
+
 
 #############
 ####BACK#####
@@ -100,6 +116,7 @@ npm i bootstrap@5.3.3
 
 DEPENDENCIAS BACK
   pip install sqlalchemy
+  pip install pymysql
   pip install mysql-connector-python
 
 DEpendencias front

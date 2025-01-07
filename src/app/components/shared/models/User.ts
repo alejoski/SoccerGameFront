@@ -4,4 +4,5 @@ export class User {
   user_name?: string;
   team_name?: string;
   password?: string;
+  create_date?: string;
 }

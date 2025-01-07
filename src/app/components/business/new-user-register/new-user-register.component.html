@@ -1,11 +1,24 @@
 <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Crea tu usuario</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
       </div>
        <form [formGroup]="formNewUser" (ngSubmit)="enviarNuevoUsuario()" >
       <div class="modal-body">
+
+        <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="userCreated">
+          <strong>Bienvenido!</strong> tu usuario se ha creado correctamente.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="createdError">
+          <strong>Lo siento!</strong> al parecer este usuario ya esta registrado.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">E-mail</label>
             <input formControlName="email" type="text" class="form-control" id="email">
@@ -21,17 +34,15 @@
             <input formControlName="password"  type="password" class="form-control" id="password" >
             <div class="text-danger" *ngIf="hasErrros('password','required')">Contraseña requerida</div>
             <div class="text-danger" *ngIf="hasErrros('password','minlength')">La contraseña debe ser minimo de 5 caracteres</div>
-            <div class="text-danger" *ngIf="!passWordEquals()">Las contraseñas no coninciden</div>
           </div>
           <div class="mb-3">
             <label for="message-text2" class="col-form-label">Confirmar contraseña</label>
-            <input formControlName="password2"  type="password" class="form-control" id="password2">
-            <div class="text-danger" *ngIf="hasErrros('password2','required')">Confirmación contraseña requerida</div>
-            <div class="text-danger" *ngIf="!passWordEquals()">Las contraseñas no coninciden</div>
+            <input formControlName="confirm_password"  type="password" class="form-control" id="confirm_password">
+            <div class="text-danger" *ngIf="hasErrros('confirm_password','required')">Confirmación contraseña requerida</div>
+            <div class="text-danger" *ngIf="!passWordEquals()">Las contraseñas no coinciden</div>
           </div>
 
-
-      </div>
+        </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="formNewUser.reset()">Cerrar</button>
         <button type="submit" class="btn btn-primary" [disabled]="(!formNewUser.valid || !passWordEquals())" >Registrarme</button>

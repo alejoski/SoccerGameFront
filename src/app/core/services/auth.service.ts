@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Route, Router } from '@angular/router';
-import { Observable, tap } from 'rxjs';
+import { catchError, Observable, tap, throwError } from 'rxjs';
 import { Util } from '../../components/shared/util/util.component';
 
 @Injectable({
@@ -12,6 +12,7 @@ export class AuthService {
 
   //Nombre del la llave con la q se alamcena en el Local Storage
   private tokenKey = 'authTokenSG';
+  private userKey = 'acc3rl0k3s';
 
   constructor(private httpClient: HttpClient, private router: Router) {}
 
@@ -19,23 +20,68 @@ export class AuthService {
     console.log('en el servicio ', email, ' / ', password);
     return this.httpClient.post<any>(this.LOGIN_URL, { email, password }).pipe(
       tap((response) => {
+        console.log('RESPONSE');
+        console.log(response);
         if (response.token) {
           console.log(response.token);
           this.setToken(response.token);
+          this.setUser(response.user);
         }
-      })
+      }),
+
+      //catchError(this.handleError)
     );
+  }
+
+
+  private handleError(error: HttpErrorResponse) {
+
+    let errorMessage = error.statusText;
+
+        console.log('*********************');
+        console.log(errorMessage);
+        console.log('*********************');
+
+
+    if (error.error instanceof ErrorEvent) {
+      console.log(error.error);
+      // Error del lado del cliente o de red
+      // errorMessage = `Error: ${error.error.message}`;
+    } else {
+      console.log(error.error);
+      // Error del lado del servidor
+      // errorMessage = `Error ${error.status}: ${error.message}`;
+    }
+    console.log("ERROR >")
+    console.log(error);
+
+    return throwError(() => new Error(errorMessage.toString()));
   }
 
   private setToken(token: string): void {
     localStorage.setItem(this.tokenKey, token);
   }
 
-  private getToken(): string | null {
+
+  private setUser(user: string): void {
+    localStorage.setItem(this.userKey, JSON.stringify(user));
+  }
+
+
+  public getToken(): string | null {
     try {
       return localStorage.getItem(this.tokenKey);
     } catch (err) {
-      console.log('localStorage no existe.');
+      console.log('localStorage no existe');
+    }
+    return null;
+  }
+
+  public getUser():string|null{
+    try {
+      return localStorage.getItem(this.userKey);
+    } catch (err) {
+      console.log('localStorage no existe');
     }
     return null;
   }
@@ -53,7 +99,7 @@ export class AuthService {
     //Obtiene la fecha del JWT
     const exp = payload.exp;
     //Obtiene la fecha actual en formato UNIX
-    const date_unix = this.getUnixDate()
+    const date_unix = this.getUnixDate();
     const date_unix2 = new Util().getUnixDate();
 
     return date_unix < exp;
@@ -64,7 +110,7 @@ export class AuthService {
     this.router.navigate(['/login']);
   }
 
-  public  getUnixDate(): Number {
+  public getUnixDate(): Number {
     const activationDate = new Date();
     const date_unix = new Date(
       activationDate.getUTCFullYear(),

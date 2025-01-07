@@ -1,12 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.css',
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
+  constructor(private authSerices: AuthService) {
 
+
+  }
+
+  ngOnInit(): void {
+    console.log("HOME - User")
+    console.log(this.authSerices.getUser());
+  }
 }
